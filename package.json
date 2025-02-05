@@ -1,0 +1,32 @@
+{
+  "name": "cbbd",
+  "version": "1.6.0",
+  "description": "This API is in limited Beta for Patreon subscribers. It may have bugs and is subject to changes. API keys can be acquired from the CollegeBasketballData.com website.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CFBD/cbbd-typescript.git"
+  },
+  "author": "BlueSCar",
+  "keywords": [
+    "basketball",
+    "cbb",
+    "mbb",
+    "ncaa",
+    "data",
+    "statistics"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@hey-api/client-fetch": "^0.8.1"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "^0.64.1",
+    "@types/node": "^22.13.1",
+    "typescript": "^5.7.3"
+  }
+}
