@@ -199,6 +199,20 @@ export type AdjustedEfficiencyInfo = {
     netRating: number;
 };
 
+export type ShotInfo = {
+    shooter: {
+        name: string;
+        id: number;
+    } | null;
+    made: boolean;
+    range: 'rim' | 'jumper' | 'three_pointer' | 'free_throw';
+    assisted: boolean;
+    assistedBy: {
+        name: string;
+        id: number;
+    } | null;
+};
+
 export type PlayInfo = {
     id: number;
     sourceId: string;
@@ -231,6 +245,7 @@ export type PlayInfo = {
         name: string;
         id: number;
     }>;
+    shotInfo: ShotInfo | null;
 };
 
 export type PlayTypeInfo = {
@@ -706,7 +721,12 @@ export type GetPlaysData = {
          */
         gameId: number;
     };
-    query?: never;
+    query?: {
+        /**
+         * Optional filter to only return shooting plays
+         */
+        shootingPlaysOnly?: boolean;
+    };
     url: '/plays/game/{gameId}';
 };
 
@@ -732,6 +752,10 @@ export type GetPlaysByPlayerIdData = {
          * Required season filter
          */
         season: number;
+        /**
+         * Optional filter to only return shooting plays
+         */
+        shootingPlaysOnly?: boolean;
     };
     url: '/plays/player/{playerId}';
 };
@@ -757,6 +781,10 @@ export type GetPlaysByTeamData = {
          * Required team filter
          */
         team: string;
+        /**
+         * Optional filter to only return shooting plays
+         */
+        shootingPlaysOnly?: boolean;
     };
     url: '/plays/team';
 };
@@ -778,6 +806,10 @@ export type GetPlaysByDateData = {
          * Required date filter in ISO 8601 format (YYYY-MM-DD)
          */
         date: string;
+        /**
+         * Optional filter to only return shooting plays
+         */
+        shootingPlaysOnly?: boolean;
     };
     url: '/plays/date';
 };
