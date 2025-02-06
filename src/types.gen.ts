@@ -199,6 +199,20 @@ export type AdjustedEfficiencyInfo = {
     netRating: number;
 };
 
+export type PollTeamInfo = {
+    season: number;
+    seasonType: SeasonType;
+    week: number;
+    pollDate: string | null;
+    pollType: string;
+    teamId: number;
+    team: string;
+    conference: string | null;
+    ranking: number | null;
+    points: number | null;
+    firstPlaceVotes: number | null;
+};
+
 export type ShotInfo = {
     shooter: {
         name: string;
@@ -712,6 +726,47 @@ export type GetAdjustedEfficiencyResponses = {
 };
 
 export type GetAdjustedEfficiencyResponse = GetAdjustedEfficiencyResponses[keyof GetAdjustedEfficiencyResponses];
+
+export type GetRankingsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Optional season filter
+         */
+        season?: number;
+        /**
+         * Optional season type filter
+         */
+        seasonType?: SeasonType;
+        /**
+         * Optional week filter
+         */
+        week?: number;
+        /**
+         * Optional poll type filter ("ap" or "coaches")
+         */
+        pollType?: 'ap' | 'coaches';
+        /**
+         * Optional team filter
+         */
+        team?: string;
+        /**
+         * Optional conference filter
+         */
+        conference?: string;
+    };
+    url: '/rankings';
+};
+
+export type GetRankingsResponses = {
+    /**
+     * Ok
+     */
+    200: Array<PollTeamInfo>;
+};
+
+export type GetRankingsResponse = GetRankingsResponses[keyof GetRankingsResponses];
 
 export type GetPlaysData = {
     body?: never;
