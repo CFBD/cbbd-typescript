@@ -179,6 +179,11 @@ export type PlayerSeasonStats = {
         defensive: number | null;
         offensive: number | null;
     };
+    winShares: {
+        total: number | null;
+        defensive: number | null;
+        offensive: number | null;
+    };
 };
 
 export type SrsInfo = {
