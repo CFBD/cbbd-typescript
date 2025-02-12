@@ -149,6 +149,7 @@ export type PlayerSeasonStats = {
     offensiveRating: number | null;
     defensiveRating: number | null;
     netRating: number | null;
+    PORPAG: number | null;
     effectiveFieldGoalPct: number | null;
     trueShootingPct: number | null;
     assistsTurnoverRatio: number | null;
@@ -180,6 +181,7 @@ export type PlayerSeasonStats = {
         offensive: number | null;
     };
     winShares: {
+        totalPer40: number | null;
         total: number | null;
         defensive: number | null;
         offensive: number | null;
