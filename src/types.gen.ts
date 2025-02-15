@@ -232,6 +232,10 @@ export type ShotInfo = {
         name: string;
         id: number;
     } | null;
+    location: {
+        y: number;
+        x: number;
+    } | null;
 };
 
 export type PlayInfo = {
