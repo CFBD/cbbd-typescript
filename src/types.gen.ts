@@ -118,6 +118,8 @@ export type TeamSeasonStats = {
     team: string;
     conference: string | null;
     games: number;
+    wins: number;
+    losses: number;
     totalMinutes: number | null;
     pace: number | null;
     offense: TeamSeasonUnitStats;
@@ -204,6 +206,11 @@ export type AdjustedEfficiencyInfo = {
     offensiveRating: number;
     defensiveRating: number;
     netRating: number;
+    rankings: {
+        net: number;
+        defense: number;
+        offense: number;
+    };
 };
 
 export type PollTeamInfo = {
