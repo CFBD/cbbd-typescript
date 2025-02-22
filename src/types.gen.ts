@@ -190,6 +190,32 @@ export type PlayerSeasonStats = {
     };
 };
 
+export type Recruit = {
+    id: number;
+    sourceId: string | null;
+    position: string | null;
+    schoolId: number | null;
+    school: string | null;
+    hometown: {
+        country: string | null;
+        state: string | null;
+        city: string | null;
+    } | null;
+    committedTo: {
+        conference: string | null;
+        name: string | null;
+        id: number | null;
+    } | null;
+    athleteId: number | null;
+    year: number;
+    name: string;
+    heightInches: number | null;
+    weightPounds: number | null;
+    stars: number;
+    rating: number;
+    ranking: number | null;
+};
+
 export type SrsInfo = {
     season: number;
     teamId: number;
@@ -720,6 +746,39 @@ export type GetPlayerSeasonStatsResponses = {
 };
 
 export type GetPlayerSeasonStatsResponse = GetPlayerSeasonStatsResponses[keyof GetPlayerSeasonStatsResponses];
+
+export type GetRecruitsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Optional year filter
+         */
+        year?: number;
+        /**
+         * Optional college team filter
+         */
+        team?: string;
+        /**
+         * Optional college conference filter
+         */
+        conference?: string;
+        /**
+         * Optional position filter
+         */
+        position?: string;
+    };
+    url: '/recruiting/players';
+};
+
+export type GetRecruitsResponses = {
+    /**
+     * Ok
+     */
+    200: Array<Recruit>;
+};
+
+export type GetRecruitsResponse = GetRecruitsResponses[keyof GetRecruitsResponses];
 
 export type GetSrsData = {
     body?: never;
