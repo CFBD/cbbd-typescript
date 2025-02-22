@@ -527,6 +527,40 @@ export type GameBoxScorePlayers = {
     }>;
 };
 
+export type DraftTeam = {
+    id: number;
+    sourceId: number;
+    location: string;
+    name: string;
+    displayName: string;
+    abbreviation: string;
+};
+
+export type DraftPosition = {
+    name: string;
+    abbreviation: string;
+};
+
+export type DraftPick = {
+    athleteId: number | null;
+    sourceTeamId: number | null;
+    sourceTeamLocation: string | null;
+    sourceTeamName: string | null;
+    sourceTeamLeagueAffiliation: string | null;
+    sourceTeamCollegeId: number | null;
+    draftTeamId: number;
+    draftTeam: string;
+    year: number;
+    overall: number;
+    round: number;
+    pick: number;
+    name: string;
+    overallRank: number | null;
+    positionRank: number | null;
+    height: number | null;
+    weight: number | null;
+};
+
 export type ConferenceInfo = {
     id: number;
     sourceId: string;
@@ -1132,6 +1166,71 @@ export type GetGamePlayersResponses = {
 };
 
 export type GetGamePlayersResponse = GetGamePlayersResponses[keyof GetGamePlayersResponses];
+
+export type GetDraftTeamsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/draft/teams';
+};
+
+export type GetDraftTeamsResponses = {
+    /**
+     * Ok
+     */
+    200: Array<DraftTeam>;
+};
+
+export type GetDraftTeamsResponse = GetDraftTeamsResponses[keyof GetDraftTeamsResponses];
+
+export type GetDraftPositionsData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/draft/positions';
+};
+
+export type GetDraftPositionsResponses = {
+    /**
+     * Ok
+     */
+    200: Array<DraftPosition>;
+};
+
+export type GetDraftPositionsResponse = GetDraftPositionsResponses[keyof GetDraftPositionsResponses];
+
+export type GetDraftPicksData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Optional draft year filter
+         */
+        year?: number;
+        /**
+         * Optional NBA team filter
+         */
+        draftTeam?: string;
+        /**
+         * Optional source team (e.g. NCAA) filter
+         */
+        sourceTeam?: string;
+        /**
+         * Optional player position abbreviation filter
+         */
+        position?: string;
+    };
+    url: '/draft/picks';
+};
+
+export type GetDraftPicksResponses = {
+    /**
+     * Ok
+     */
+    200: Array<DraftPick>;
+};
+
+export type GetDraftPicksResponse = GetDraftPicksResponses[keyof GetDraftPicksResponses];
 
 export type GetConferencesData = {
     body?: never;
