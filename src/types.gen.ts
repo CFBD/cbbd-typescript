@@ -125,8 +125,8 @@ export type TeamSeasonStats = {
     losses: number;
     totalMinutes: number | null;
     pace: number | null;
-    offense: TeamSeasonUnitStats;
-    defense: TeamSeasonUnitStats;
+    teamStats: TeamSeasonUnitStats;
+    opponentStats: TeamSeasonUnitStats;
 };
 
 export type SeasonType = 'postseason' | 'preseason' | 'regular';
@@ -484,8 +484,8 @@ export type GameBoxScoreTeam = {
     notes: string | null;
     gameMinutes: number | null;
     pace: number | null;
-    offense: GameBoxScoreTeamStats;
-    defense: GameBoxScoreTeamStats;
+    teamStats: GameBoxScoreTeamStats;
+    opponentStats: GameBoxScoreTeamStats;
 };
 
 export type GameBoxScorePlayers = {
