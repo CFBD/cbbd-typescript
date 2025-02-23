@@ -38,6 +38,9 @@ export type TeamRosterPlayer = {
     height: number | null;
     weight: number | null;
     hometown: {
+        countyFips: string | null;
+        longitude: number | null;
+        latitude: number | null;
         country: string | null;
         state: string | null;
         city: string | null;
@@ -197,6 +200,9 @@ export type Recruit = {
     schoolId: number | null;
     school: string | null;
     hometown: {
+        countyFips: string | null;
+        longitude: number | null;
+        latitude: number | null;
         country: string | null;
         state: string | null;
         city: string | null;
