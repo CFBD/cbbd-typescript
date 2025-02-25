@@ -261,20 +261,20 @@ export type PollTeamInfo = {
 
 export type ShotInfo = {
     shooter: {
-        name: string;
-        id: number;
-    } | null;
+        name: string | null;
+        id: number | null;
+    };
     made: boolean;
     range: 'rim' | 'jumper' | 'three_pointer' | 'free_throw';
     assisted: boolean;
     assistedBy: {
-        name: string;
-        id: number;
-    } | null;
+        name: string | null;
+        id: number | null;
+    };
     location: {
-        y: number;
-        x: number;
-    } | null;
+        y: number | null;
+        x: number | null;
+    };
 };
 
 export type PlayInfo = {
