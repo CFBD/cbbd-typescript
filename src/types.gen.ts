@@ -59,6 +59,32 @@ export type TeamRoster = {
     players: Array<TeamRosterPlayer>;
 };
 
+export type PlayerSubsititution = {
+    gameId: number;
+    startDate: string;
+    teamId: number;
+    team: string;
+    conference: string | null;
+    athleteId: number;
+    athlete: string;
+    position: string | null;
+    opponentId: number;
+    opponent: string;
+    opponentConference: string | null;
+    subIn: {
+        opponentPoints: number;
+        teamPoints: number;
+        secondsRemaining: number;
+        period: number;
+    };
+    subOut: {
+        opponentPoints: number;
+        teamPoints: number;
+        secondsRemaining: number;
+        period: number;
+    };
+};
+
 export type TeamSeasonUnitStats = {
     fieldGoals: {
         pct: number | null;
@@ -682,6 +708,78 @@ export type GetTeamRosterResponses = {
 };
 
 export type GetTeamRosterResponse = GetTeamRosterResponses[keyof GetTeamRosterResponses];
+
+export type GetSubstitutionsByGameData = {
+    body?: never;
+    path: {
+        /**
+         * Game id filter
+         */
+        gameId: number;
+    };
+    query?: never;
+    url: '/substitutions/game/{gameId}';
+};
+
+export type GetSubstitutionsByGameResponses = {
+    /**
+     * Ok
+     */
+    200: Array<PlayerSubsititution>;
+};
+
+export type GetSubstitutionsByGameResponse = GetSubstitutionsByGameResponses[keyof GetSubstitutionsByGameResponses];
+
+export type GetSubstitutionsByPlayerIdData = {
+    body?: never;
+    path: {
+        /**
+         * Required player id filter
+         */
+        playerId: number;
+    };
+    query: {
+        /**
+         * Required season filter
+         */
+        season: number;
+    };
+    url: '/substitutions/player/{playerId}';
+};
+
+export type GetSubstitutionsByPlayerIdResponses = {
+    /**
+     * Ok
+     */
+    200: Array<PlayerSubsititution>;
+};
+
+export type GetSubstitutionsByPlayerIdResponse = GetSubstitutionsByPlayerIdResponses[keyof GetSubstitutionsByPlayerIdResponses];
+
+export type GetSubstitutionsByTeamData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Required season filter
+         */
+        season: number;
+        /**
+         * Required team filter
+         */
+        team: string;
+    };
+    url: '/substitutions/team';
+};
+
+export type GetSubstitutionsByTeamResponses = {
+    /**
+     * Ok
+     */
+    200: Array<PlayerSubsititution>;
+};
+
+export type GetSubstitutionsByTeamResponse = GetSubstitutionsByTeamResponses[keyof GetSubstitutionsByTeamResponses];
 
 export type GetTeamSeasonStatsData = {
     body?: never;
