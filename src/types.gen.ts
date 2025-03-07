@@ -335,6 +335,11 @@ export type PlayInfo = {
         name: string;
         id: number;
     }>;
+    onFloor: Array<{
+        team: string;
+        name: string;
+        id: number;
+    }>;
     shotInfo: ShotInfo | null;
 };
 
