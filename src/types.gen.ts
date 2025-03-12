@@ -348,6 +348,57 @@ export type PlayTypeInfo = {
     name: string;
 };
 
+export type ShootingStats = {
+    made: number;
+    attempted: number;
+    pct: number;
+};
+
+export type LineupUnitStats = {
+    possessions: number;
+    points: number;
+    blocks: number;
+    assists: number;
+    steals: number;
+    turnovers: number;
+    defensiveRebounds: number;
+    offensiveRebounds: number;
+    trueShooting: number;
+    fieldGoals: ShootingStats;
+    twoPointers: ShootingStats & {
+        jumpers: ShootingStats;
+        layups: ShootingStats;
+        dunks: ShootingStats;
+        tipIns: ShootingStats;
+    };
+    threePointers: ShootingStats;
+    freeThrows: ShootingStats;
+    fourFactors: {
+        freeThrowRate: number;
+        offensiveReboundPct: number;
+        turnoverRatio: number;
+        effectiveFieldGoalPct: number;
+    };
+};
+
+export type LineupStats = {
+    teamId: number;
+    team: string;
+    conference: string;
+    idHash: string;
+    athletes: Array<{
+        name: string;
+        id: number;
+    }>;
+    totalSeconds: number;
+    pace: number;
+    offenseRating: number;
+    defenseRating: number;
+    netRating: number;
+    teamStats: LineupUnitStats;
+    opponentStats: LineupUnitStats;
+};
+
 export type GameLineInfo = {
     provider: string;
     spread: number | null;
@@ -1113,6 +1164,60 @@ export type GetPlayTypesResponses = {
 };
 
 export type GetPlayTypesResponse = GetPlayTypesResponses[keyof GetPlayTypesResponses];
+
+export type GetSubstitutionsByGameData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Required season filter
+         */
+        season: number;
+        /**
+         * Required team filter
+         */
+        team: string;
+        /**
+         * Optional start date range filter
+         */
+        startDateRange?: string;
+        /**
+         * Optional end date range filter
+         */
+        endDateRange?: string;
+    };
+    url: '/lineups/team';
+};
+
+export type GetSubstitutionsByGameResponses = {
+    /**
+     * Ok
+     */
+    200: Array<LineupStats>;
+};
+
+export type GetSubstitutionsByGameResponse = GetSubstitutionsByGameResponses[keyof GetSubstitutionsByGameResponses];
+
+export type GetLineupStatsByGameData = {
+    body?: never;
+    path: {
+        /**
+         * Required game id filter
+         */
+        gameId: number;
+    };
+    query?: never;
+    url: '/lineups/game/{gameId}';
+};
+
+export type GetLineupStatsByGameResponses = {
+    /**
+     * Ok
+     */
+    200: Array<LineupStats>;
+};
+
+export type GetLineupStatsByGameResponse = GetLineupStatsByGameResponses[keyof GetLineupStatsByGameResponses];
 
 export type GetLinesData = {
     body?: never;
