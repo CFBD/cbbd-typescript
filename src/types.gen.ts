@@ -1165,7 +1165,7 @@ export type GetPlayTypesResponses = {
 
 export type GetPlayTypesResponse = GetPlayTypesResponses[keyof GetPlayTypesResponses];
 
-export type GetSubstitutionsByGameData = {
+export type GetLineupsByTeamSeasonData = {
     body?: never;
     path?: never;
     query: {
@@ -1189,14 +1189,14 @@ export type GetSubstitutionsByGameData = {
     url: '/lineups/team';
 };
 
-export type GetSubstitutionsByGameResponses = {
+export type GetLineupsByTeamSeasonResponses = {
     /**
      * Ok
      */
     200: Array<LineupStats>;
 };
 
-export type GetSubstitutionsByGameResponse = GetSubstitutionsByGameResponses[keyof GetSubstitutionsByGameResponses];
+export type GetLineupsByTeamSeasonResponse = GetLineupsByTeamSeasonResponses[keyof GetLineupsByTeamSeasonResponses];
 
 export type GetLineupStatsByGameData = {
     body?: never;
