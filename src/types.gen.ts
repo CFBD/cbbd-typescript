@@ -443,6 +443,7 @@ export type GameInfo = {
     neutralSite: boolean;
     conferenceGame: boolean;
     gameType: string | null;
+    gameNotes: string | null;
     status: GameStatus;
     attendance: number | null;
     homeTeamId: number;
