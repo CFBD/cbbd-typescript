@@ -312,14 +312,17 @@ export type PlayInfo = {
     season: number;
     seasonType: SeasonType;
     gameType: string;
+    tournament: string | null;
     playType: string;
     isHomeTeam: boolean | null;
     teamId: number | null;
     team: string | null;
     conference: string | null;
+    teamSeed: number | null;
     opponentId: number | null;
     opponent: string | null;
     opponentConference: string | null;
+    opponentSeed: number | null;
     period: number;
     clock: string;
     secondsRemaining: number;
@@ -443,6 +446,7 @@ export type GameInfo = {
     neutralSite: boolean;
     conferenceGame: boolean;
     gameType: string | null;
+    tournament: string | null;
     gameNotes: string | null;
     status: GameStatus;
     attendance: number | null;
@@ -450,6 +454,7 @@ export type GameInfo = {
     homeTeam: string;
     homeConferenceId: number | null;
     homeConference: string | null;
+    homeSeed: number | null;
     homePoints: number | null;
     homePeriodPoints: Array<number> | null;
     homeWinner: boolean | null;
@@ -457,6 +462,7 @@ export type GameInfo = {
     awayTeam: string;
     awayConferenceId: number | null;
     awayConference: string | null;
+    awaySeed: number | null;
     awayPoints: number | null;
     awayPeriodPoints: Array<number> | null;
     awayWinner: boolean | null;
@@ -472,6 +478,7 @@ export type GameMediaInfo = {
     season: number;
     seasonLabel: string;
     seasonType: SeasonType;
+    tournament: string | null;
     startDate: string;
     startTimeTbd: boolean;
     homeTeamId: number;
@@ -553,14 +560,17 @@ export type GameBoxScoreTeam = {
     season: number;
     seasonLabel: string;
     seasonType: SeasonType;
+    tournament: string | null;
     startDate: string;
     startTimeTbd: boolean;
     teamId: number;
     team: string;
     conference: string | null;
+    teamSeed: number | null;
     opponentId: number;
     opponent: string;
     opponentConference: string | null;
+    opponentSeed: number | null;
     neutralSite: boolean;
     conferenceGame: boolean;
     gameType: string | null;
@@ -576,14 +586,17 @@ export type GameBoxScorePlayers = {
     season: number;
     seasonLabel: string;
     seasonType: SeasonType;
+    tournament: string | null;
     startDate: string;
     startTimeTbd: boolean;
     teamId: number;
     team: string;
     conference: string | null;
+    teamSeed: number | null;
     opponentId: number;
     opponent: string;
     opponentConference: string | null;
+    opponentSeed: number | null;
     neutralSite: boolean;
     conferenceGame: boolean;
     gameType: string | null;
@@ -1150,6 +1163,35 @@ export type GetPlaysByDateResponses = {
 
 export type GetPlaysByDateResponse = GetPlaysByDateResponses[keyof GetPlaysByDateResponses];
 
+export type GetPlaysByTournamentData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Required tournament filter (e.g. NCAA, NIT, etc)
+         */
+        tournament: string;
+        /**
+         * Required season filter
+         */
+        season: number;
+        /**
+         * Optional filter to only return shooting plays
+         */
+        shootingPlaysOnly?: boolean;
+    };
+    url: '/plays/tournament';
+};
+
+export type GetPlaysByTournamentResponses = {
+    /**
+     * Ok
+     */
+    200: Array<PlayInfo>;
+};
+
+export type GetPlaysByTournamentResponse = GetPlaysByTournamentResponses[keyof GetPlaysByTournamentResponses];
+
 export type GetPlayTypesData = {
     body?: never;
     path?: never;
@@ -1305,6 +1347,10 @@ export type GetGamesData = {
          * Optional game status filter
          */
         status?: GameStatus;
+        /**
+         * Optional tournament filter (e.g. NCAA, NIT, etc)
+         */
+        tournament?: string;
     };
     url: '/games';
 };
@@ -1346,6 +1392,10 @@ export type GetBroadcastsData = {
          * Optional season type filter
          */
         seasonType?: SeasonType;
+        /**
+         * Optional tournament filter (e.g. NCAA, NIT, etc)
+         */
+        tournament?: string;
     };
     url: '/games/media';
 };
@@ -1387,6 +1437,10 @@ export type GetGameTeamsData = {
          * Optional season type filter
          */
         seasonType?: SeasonType;
+        /**
+         * Optional tournament filter (e.g. NCAA, NIT, etc)
+         */
+        tournament?: string;
     };
     url: '/games/teams';
 };
@@ -1428,6 +1482,10 @@ export type GetGamePlayersData = {
          * Optional season type filter
          */
         seasonType?: SeasonType;
+        /**
+         * Optional tournament filter (e.g. NCAA, NIT, etc)
+         */
+        tournament?: string;
     };
     url: '/games/players';
 };
