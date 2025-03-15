@@ -572,6 +572,7 @@ export type GameBoxScoreTeam = {
     opponentConference: string | null;
     opponentSeed: number | null;
     neutralSite: boolean;
+    isHome: boolean;
     conferenceGame: boolean;
     gameType: string | null;
     notes: string | null;
@@ -598,6 +599,7 @@ export type GameBoxScorePlayers = {
     opponentConference: string | null;
     opponentSeed: number | null;
     neutralSite: boolean;
+    isHome: boolean;
     conferenceGame: boolean;
     gameType: string | null;
     notes: string | null;
