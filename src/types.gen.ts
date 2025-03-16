@@ -157,6 +157,45 @@ export type TeamSeasonStats = {
 
 export type SeasonType = 'postseason' | 'preseason' | 'regular';
 
+export type ShotTypeBreakdown = {
+    made: number;
+    attempted: number;
+    pct: number;
+};
+
+export type SeasonShootingStats = {
+    season: number;
+    teamId: number;
+    team: string;
+    conference: string | null;
+    trackedShots: number;
+    assistedPct: number;
+    dunks: ShotTypeBreakdown & {
+        assistedPct: number;
+        assisted: number;
+    };
+    layups: ShotTypeBreakdown & {
+        assistedPct: number;
+        assisted: number;
+    };
+    tipIns: ShotTypeBreakdown;
+    twoPointJumpers: ShotTypeBreakdown & {
+        assistedPct: number;
+        assisted: number;
+    };
+    threePointJumpers: ShotTypeBreakdown & {
+        assistedPct: number;
+        assisted: number;
+    };
+    attemptsBreakdown: {
+        threePointJumpers: number;
+        twoPointJumpers: number;
+        tipIns: number;
+        layups: number;
+        dunks: number;
+    };
+};
+
 export type PlayerSeasonStats = {
     season: number;
     seasonLabel: string;
@@ -217,6 +256,41 @@ export type PlayerSeasonStats = {
         defensive: number | null;
         offensive: number | null;
     };
+};
+
+export type PlayerSeasonShootingStats = {
+    season: number;
+    teamId: number;
+    team: string;
+    conference: string | null;
+    trackedShots: number;
+    assistedPct: number;
+    dunks: ShotTypeBreakdown & {
+        assistedPct: number;
+        assisted: number;
+    };
+    layups: ShotTypeBreakdown & {
+        assistedPct: number;
+        assisted: number;
+    };
+    tipIns: ShotTypeBreakdown;
+    twoPointJumpers: ShotTypeBreakdown & {
+        assistedPct: number;
+        assisted: number;
+    };
+    threePointJumpers: ShotTypeBreakdown & {
+        assistedPct: number;
+        assisted: number;
+    };
+    attemptsBreakdown: {
+        threePointJumpers: number;
+        twoPointJumpers: number;
+        tipIns: number;
+        layups: number;
+        dunks: number;
+    };
+    athleteId: number;
+    athleteName: string;
 };
 
 export type Recruit = {
@@ -888,6 +962,47 @@ export type GetTeamSeasonStatsResponses = {
 
 export type GetTeamSeasonStatsResponse = GetTeamSeasonStatsResponses[keyof GetTeamSeasonStatsResponses];
 
+export type GetTeamSeasonShootingStatsData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Required season filter
+         */
+        season: number;
+        /**
+         * Optional season type filter
+         */
+        seasonType?: SeasonType;
+        /**
+         * Team filter, required if conference is not provided
+         */
+        team?: string;
+        /**
+         * Conference abbreviation filter, required if team is not provided
+         */
+        conference?: string;
+        /**
+         * Optional start date range filter
+         */
+        startDateRange?: string;
+        /**
+         * Optional end date range filter
+         */
+        endDateRange?: string;
+    };
+    url: '/stats/team/shooting/season';
+};
+
+export type GetTeamSeasonShootingStatsResponses = {
+    /**
+     * Ok
+     */
+    200: Array<SeasonShootingStats>;
+};
+
+export type GetTeamSeasonShootingStatsResponse = GetTeamSeasonShootingStatsResponses[keyof GetTeamSeasonShootingStatsResponses];
+
 export type GetPlayerSeasonStatsData = {
     body?: never;
     path?: never;
@@ -922,6 +1037,47 @@ export type GetPlayerSeasonStatsResponses = {
 };
 
 export type GetPlayerSeasonStatsResponse = GetPlayerSeasonStatsResponses[keyof GetPlayerSeasonStatsResponses];
+
+export type GetPlayerSeasonShootingStatsData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * Required season filter
+         */
+        season: number;
+        /**
+         * Optional season type filter
+         */
+        seasonType?: SeasonType;
+        /**
+         * Team filter, required if conference is not provided
+         */
+        team?: string;
+        /**
+         * Conference abbreviation filter, required if team is not provided
+         */
+        conference?: string;
+        /**
+         * Optional start date range filter
+         */
+        startDateRange?: string;
+        /**
+         * Optional end date range filter
+         */
+        endDateRange?: string;
+    };
+    url: '/stats/player/shooting/season';
+};
+
+export type GetPlayerSeasonShootingStatsResponses = {
+    /**
+     * Ok
+     */
+    200: Array<PlayerSeasonShootingStats>;
+};
+
+export type GetPlayerSeasonShootingStatsResponse = GetPlayerSeasonShootingStatsResponses[keyof GetPlayerSeasonShootingStatsResponses];
 
 export type GetRecruitsData = {
     body?: never;
