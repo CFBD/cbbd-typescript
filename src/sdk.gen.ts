@@ -381,6 +381,9 @@ export const getLines = <ThrowOnError extends boolean = false>(options?: Options
     });
 };
 
+/**
+ * Returns a list of available line providers
+ */
 export const getProviders = <ThrowOnError extends boolean = false>(options?: Options<GetProvidersData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetProvidersResponse, unknown, ThrowOnError>({
         security: [

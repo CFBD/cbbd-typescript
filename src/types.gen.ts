@@ -170,6 +170,7 @@ export type SeasonShootingStats = {
     conference: string | null;
     trackedShots: number;
     assistedPct: number;
+    freeThrowRate: number;
     dunks: ShotTypeBreakdown & {
         assistedPct: number;
         assisted: number;
@@ -187,6 +188,7 @@ export type SeasonShootingStats = {
         assistedPct: number;
         assisted: number;
     };
+    freeThrows: ShotTypeBreakdown;
     attemptsBreakdown: {
         threePointJumpers: number;
         twoPointJumpers: number;
@@ -265,6 +267,7 @@ export type PlayerSeasonShootingStats = {
     conference: string | null;
     trackedShots: number;
     assistedPct: number;
+    freeThrowRate: number;
     dunks: ShotTypeBreakdown & {
         assistedPct: number;
         assisted: number;
@@ -282,6 +285,7 @@ export type PlayerSeasonShootingStats = {
         assistedPct: number;
         assisted: number;
     };
+    freeThrows: ShotTypeBreakdown;
     attemptsBreakdown: {
         threePointJumpers: number;
         twoPointJumpers: number;
