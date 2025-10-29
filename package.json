@@ -1,6 +1,6 @@
 {
   "name": "cbbd",
-  "version": "1.21.0",
+  "version": "1.21.1",
   "description": "This API is in limited Beta for Patreon subscribers. It may have bugs and is subject to changes. API keys can be acquired from the CollegeBasketballData.com website.",
   "repository": {
     "type": "git",
