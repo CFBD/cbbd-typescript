@@ -1312,6 +1312,10 @@ export type GetPlaysByDateData = {
          * Optional filter to only return shooting plays
          */
         shootingPlaysOnly?: boolean;
+        /**
+         * Optional UTC offset in hours to adjust the date range
+         */
+        utcOffset?: number;
     };
     url: '/plays/date';
 };
