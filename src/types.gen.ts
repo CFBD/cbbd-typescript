@@ -349,6 +349,14 @@ export type AdjustedEfficiencyInfo = {
     };
 };
 
+export type TeamElo = {
+    season: number;
+    teamId: number;
+    team: string;
+    conference: string;
+    elo: number | null;
+};
+
 export type PollTeamInfo = {
     season: number;
     seasonType: SeasonType;
@@ -536,6 +544,8 @@ export type GameInfo = {
     homePoints: number | null;
     homePeriodPoints: Array<number> | null;
     homeWinner: boolean | null;
+    homeTeamEloStart: number | null;
+    homeTeamEloEnd: number | null;
     awayTeamId: number;
     awayTeam: string;
     awayConferenceId: number | null;
@@ -544,6 +554,8 @@ export type GameInfo = {
     awayPoints: number | null;
     awayPeriodPoints: Array<number> | null;
     awayWinner: boolean | null;
+    awayTeamEloStart: number | null;
+    awayTeamEloEnd: number | null;
     excitement: number | null;
     venueId: number | null;
     venue: string | null;
@@ -1173,6 +1185,35 @@ export type GetAdjustedEfficiencyResponses = {
 };
 
 export type GetAdjustedEfficiencyResponse = GetAdjustedEfficiencyResponses[keyof GetAdjustedEfficiencyResponses];
+
+export type GetEloData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Optional season filter
+         */
+        season?: number;
+        /**
+         * Optional team filter
+         */
+        team?: string;
+        /**
+         * Optional conference filter
+         */
+        conference?: string;
+    };
+    url: '/ratings/elo';
+};
+
+export type GetEloResponses = {
+    /**
+     * Ok
+     */
+    200: Array<TeamElo>;
+};
+
+export type GetEloResponse = GetEloResponses[keyof GetEloResponses];
 
 export type GetRankingsData = {
     body?: never;
