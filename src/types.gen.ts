@@ -326,6 +326,15 @@ export type Recruit = {
     ranking: number | null;
 };
 
+export type TeamRecruitingRanking = {
+    teamId: number;
+    team: string;
+    conference: string | null;
+    year: number;
+    ranking: number;
+    rating: number;
+};
+
 export type SrsInfo = {
     season: number;
     teamId: number;
@@ -1127,6 +1136,35 @@ export type GetRecruitsResponses = {
 };
 
 export type GetRecruitsResponse = GetRecruitsResponses[keyof GetRecruitsResponses];
+
+export type GetTeamRecruitingRankingsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Optional year filter
+         */
+        year?: number;
+        /**
+         * Optional team filter
+         */
+        team?: string;
+        /**
+         * Optional conference abbreviation filter
+         */
+        conference?: string;
+    };
+    url: '/recruiting/teams';
+};
+
+export type GetTeamRecruitingRankingsResponses = {
+    /**
+     * Ok
+     */
+    200: Array<TeamRecruitingRanking>;
+};
+
+export type GetTeamRecruitingRankingsResponse = GetTeamRecruitingRankingsResponses[keyof GetTeamRecruitingRankingsResponses];
 
 export type GetSrsData = {
     body?: never;
