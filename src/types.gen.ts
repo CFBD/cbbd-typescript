@@ -756,6 +756,45 @@ export type GameBoxScorePlayers = {
     }>;
 };
 
+export type ScoreboardGame = {
+    id: number;
+    startDate: string;
+    startTimeTbd: boolean;
+    tv: string | null;
+    neutralSite: boolean;
+    conferenceGame: boolean;
+    status: GameStatus;
+    period: number | null;
+    clock: string | null;
+    venue: string | null;
+    city: string | null;
+    state: string | null;
+    homeTeam: {
+        lineScores: Array<number> | null;
+        points: number | null;
+        conferenceAbbreviation: string | null;
+        conference: string | null;
+        location: string | null;
+        name: string;
+        id: number;
+    };
+    awayTeam: {
+        lineScores: Array<number> | null;
+        points: number | null;
+        conferenceAbbreviation: string | null;
+        conference: string | null;
+        location: string | null;
+        name: string;
+        id: number;
+    };
+    betting: {
+        awayMoneyline: number | null;
+        homeMoneyline: number | null;
+        overUnder: number | null;
+        spread: number | null;
+    };
+};
+
 export type DraftTeam = {
     id: number;
     sourceId: number;
@@ -1743,6 +1782,27 @@ export type GetGamePlayersResponses = {
 };
 
 export type GetGamePlayersResponse = GetGamePlayersResponses[keyof GetGamePlayersResponses];
+
+export type GetScoreboardData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Optional conference filter
+         */
+        conference?: string;
+    };
+    url: '/scoreboard';
+};
+
+export type GetScoreboardResponses = {
+    /**
+     * Ok
+     */
+    200: Array<ScoreboardGame>;
+};
+
+export type GetScoreboardResponse = GetScoreboardResponses[keyof GetScoreboardResponses];
 
 export type GetDraftTeamsData = {
     body?: never;
