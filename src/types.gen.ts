@@ -85,6 +85,150 @@ export type PlayerSubsititution = {
     };
 };
 
+export type TeamStatsLeaderboardConference = {
+    id: number | null;
+    abbreviation: string | null;
+};
+
+export type TeamStatsLeaderboardRecordSummary = {
+    games: number;
+    wins: number;
+    losses: number;
+};
+
+export type TeamStatsLeaderboardSummary = {
+    totalMinutes: number;
+    trackedShots: number;
+    pace: number | null;
+    rawNetRating: number | null;
+};
+
+export type TeamStatsLeaderboardUnitStats = {
+    points: {
+        fastBreak: number;
+        offTurnovers: number;
+        inPaint: number;
+        total: number;
+    };
+    possessions: number;
+    rawOffensiveRating: number | null;
+    trueShootingPct: number | null;
+    effectiveFieldGoalPct: number | null;
+    turnoverRatio: number | null;
+    offensiveReboundPct: number | null;
+    freeThrowRate: number | null;
+    fieldGoals: {
+        attempted: number;
+        made: number;
+    };
+    twoPointFieldGoals: {
+        attempted: number;
+        made: number;
+    };
+    threePointFieldGoals: {
+        attempted: number;
+        made: number;
+    };
+    freeThrows: {
+        attempted: number;
+        made: number;
+    };
+    rebounds: {
+        total: number;
+        defensive: number;
+        offensive: number;
+    };
+    turnovers: {
+        technical: number;
+        team: number;
+        total: number;
+    };
+    fouls: {
+        flagrant: number;
+        technical: number;
+        total: number;
+    };
+    assists: number;
+    blocks: number;
+    steals: number;
+};
+
+export type TeamStatsLeaderboardShotProfile = {
+    assistedPct: number;
+    atRim: {
+        assistedPct: number | null;
+        pct: number | null;
+        rate: number | null;
+    };
+    dunk: {
+        rate: number | null;
+        assisted: number;
+        made: number;
+        attempts: number;
+    };
+    layup: {
+        rate: number | null;
+        assisted: number;
+        made: number;
+        attempts: number;
+    };
+    tipIn: {
+        rate: number | null;
+        made: number;
+        attempts: number;
+    };
+    twoPointJumper: {
+        assistedPct: number | null;
+        pct: number | null;
+        rate: number | null;
+        assisted: number;
+        made: number;
+        attempts: number;
+    };
+    threePointJumper: {
+        assistedPct: number | null;
+        pct: number | null;
+        rate: number | null;
+        assisted: number;
+        made: number;
+        attempts: number;
+    };
+    freeThrows: {
+        rate: number;
+        made: number;
+        attempts: number;
+    };
+    distribution: {
+        threeRate: number | null;
+        jumperRate: number | null;
+        midrangeRate: number | null;
+    };
+};
+
+export type TeamLeaderboardAdjustedEfficiency = {
+    offensiveRating: number | null;
+    defensiveRating: number | null;
+    netRating: number | null;
+    rankings: {
+        net: number | null;
+        defense: number | null;
+        offense: number | null;
+    };
+};
+
+export type TeamStatsLeaderboardRecord = {
+    season: number;
+    teamId: number;
+    team: string;
+    conference: TeamStatsLeaderboardConference;
+    record: TeamStatsLeaderboardRecordSummary;
+    summary: TeamStatsLeaderboardSummary;
+    teamStats: TeamStatsLeaderboardUnitStats;
+    opponentStats: TeamStatsLeaderboardUnitStats;
+    shotProfile: TeamStatsLeaderboardShotProfile;
+    adjustedEfficiency: TeamLeaderboardAdjustedEfficiency | null;
+};
+
 export type TeamSeasonUnitStats = {
     fieldGoals: {
         pct: number | null;
@@ -990,6 +1134,35 @@ export type GetSubstitutionsByTeamResponses = {
 };
 
 export type GetSubstitutionsByTeamResponse = GetSubstitutionsByTeamResponses[keyof GetSubstitutionsByTeamResponses];
+
+export type GetTeamLeaderboardStatsData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Optional season filter
+         */
+        season?: number;
+        /**
+         * Optional team name filter
+         */
+        team?: string;
+        /**
+         * Optional conference abbreviation filter
+         */
+        conference?: string;
+    };
+    url: '/stats/team/leaderboard';
+};
+
+export type GetTeamLeaderboardStatsResponses = {
+    /**
+     * Ok
+     */
+    200: Array<TeamStatsLeaderboardRecord>;
+};
+
+export type GetTeamLeaderboardStatsResponse = GetTeamLeaderboardStatsResponses[keyof GetTeamLeaderboardStatsResponses];
 
 export type GetTeamSeasonStatsData = {
     body?: never;
