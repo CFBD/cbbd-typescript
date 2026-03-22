@@ -110,7 +110,7 @@ export const getSubstitutionsByTeam = <ThrowOnError extends boolean = false>(opt
 };
 
 /**
- * Returns premium team leaderboard statistics by season, team, or conference (requires a Patreon Tier 3 subscription or higher)
+ * Returns premium team leaderboard statistics by season, team, or conference (requires a Patreon Tier 2 subscription or higher)
  */
 export const getTeamLeaderboardStats = <ThrowOnError extends boolean = false>(options?: Options<GetTeamLeaderboardStatsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetTeamLeaderboardStatsResponse, unknown, ThrowOnError>({
