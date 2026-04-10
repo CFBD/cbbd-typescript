@@ -479,6 +479,34 @@ export type TeamRecruitingRanking = {
     rating: number;
 };
 
+export type TransferEligibility = 'Withdrawn' | 'TBD' | 'PendingAppeal' | 'SittingOne' | 'Immediate';
+
+export type Transfer = {
+    id: number;
+    sourceId: string;
+    year: number;
+    firstName: string;
+    lastName: string;
+    position: string;
+    origin: {
+        conference: string | null;
+        name: string | null;
+        /**
+         * *
+         */
+        id: number | null;
+    } | null;
+    destination: {
+        conference: string | null;
+        name: string | null;
+        id: number | null;
+    } | null;
+    eligibility: TransferEligibility | null;
+    yearsRemaining: number | null;
+    stars: number | null;
+    rating: number | null;
+};
+
 export type SrsInfo = {
     season: number;
     teamId: number;
@@ -1377,6 +1405,44 @@ export type GetTeamRecruitingRankingsResponses = {
 };
 
 export type GetTeamRecruitingRankingsResponse = GetTeamRecruitingRankingsResponses[keyof GetTeamRecruitingRankingsResponses];
+
+export type GetPortalTransfersData = {
+    body?: never;
+    path?: never;
+    query?: {
+        year?: number;
+        /**
+         * Source team filter
+         */
+        sourceTeam?: string;
+        /**
+         * Destination team filter
+         */
+        destinationTeam?: string;
+        /**
+         * Source conference filter
+         */
+        sourceConference?: string;
+        /**
+         * Destination conference filter
+         */
+        destinationConference?: string;
+        /**
+         * Position filter
+         */
+        position?: string;
+    };
+    url: '/recruiting/portal';
+};
+
+export type GetPortalTransfersResponses = {
+    /**
+     * Ok
+     */
+    200: Array<Transfer>;
+};
+
+export type GetPortalTransfersResponse = GetPortalTransfersResponses[keyof GetPortalTransfersResponses];
 
 export type GetSrsData = {
     body?: never;
