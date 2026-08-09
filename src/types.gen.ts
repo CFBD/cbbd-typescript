@@ -1046,11 +1046,11 @@ export type GetTeamsData = {
     path?: never;
     query?: {
         /**
-         * Optional conference filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
         /**
-         * Optional season filter
+         * Returns conference membership for the specified season.
          */
         season?: number;
     };
@@ -1071,11 +1071,11 @@ export type GetTeamRosterData = {
     path?: never;
     query: {
         /**
-         * Season filter
+         * The season to return.
          */
         season: number;
         /**
-         * Optional team filter
+         * Filters results to the specified team name.
          */
         team?: string;
     };
@@ -1095,7 +1095,7 @@ export type GetSubstitutionsByGameData = {
     body?: never;
     path: {
         /**
-         * Game id filter
+         * The game ID.
          */
         gameId: number;
     };
@@ -1116,13 +1116,13 @@ export type GetSubstitutionsByPlayerIdData = {
     body?: never;
     path: {
         /**
-         * Required player id filter
+         * The player ID.
          */
         playerId: number;
     };
     query: {
         /**
-         * Required season filter
+         * The season to return.
          */
         season: number;
     };
@@ -1143,11 +1143,11 @@ export type GetSubstitutionsByTeamData = {
     path?: never;
     query: {
         /**
-         * Required season filter
+         * The season to return.
          */
         season: number;
         /**
-         * Required team filter
+         * The team name to return.
          */
         team: string;
     };
@@ -1168,15 +1168,15 @@ export type GetTeamLeaderboardStatsData = {
     path?: never;
     query?: {
         /**
-         * Optional season filter
+         * Filters results to the specified season.
          */
         season?: number;
         /**
-         * Optional team name filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
     };
@@ -1197,22 +1197,28 @@ export type GetTeamSeasonStatsData = {
     path?: never;
     query?: {
         /**
-         * Optional season filter, required if team is not provided
+         * Filters results to the specified season. Required when team is not provided.
          */
         season?: number;
         /**
-         * Optional season type filter
+         * Filters results to the specified season type.
          */
         seasonType?: SeasonType;
         /**
-         * Optional team name filter, required if season is not provided
+         * Filters results to the specified team name. Required when season is not provided.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
+        /**
+         * Includes games starting at or after this ISO 8601 timestamp.
+         */
         startDateRange?: string;
+        /**
+         * Includes games starting at or before this ISO 8601 timestamp.
+         */
         endDateRange?: string;
     };
     url: '/stats/team/season';
@@ -1232,27 +1238,27 @@ export type GetTeamSeasonShootingStatsData = {
     path?: never;
     query: {
         /**
-         * Required season filter
+         * The season to return.
          */
         season: number;
         /**
-         * Optional season type filter
+         * Filters results to the specified season type.
          */
         seasonType?: SeasonType;
         /**
-         * Team filter, required if conference is not provided
+         * Filters results to the specified team name. Required when conference is not provided.
          */
         team?: string;
         /**
-         * Conference abbreviation filter, required if team is not provided
+         * Filters results to the specified conference abbreviation. Required when team is not provided.
          */
         conference?: string;
         /**
-         * Optional start date range filter
+         * Includes games starting at or after this ISO 8601 timestamp.
          */
         startDateRange?: string;
         /**
-         * Optional end date range filter
+         * Includes games starting at or before this ISO 8601 timestamp.
          */
         endDateRange?: string;
     };
@@ -1273,22 +1279,28 @@ export type GetPlayerSeasonStatsData = {
     path?: never;
     query: {
         /**
-         * Required season filter
+         * The season to return.
          */
         season: number;
         /**
-         * Optional season type filter
+         * Filters results to the specified season type.
          */
         seasonType?: SeasonType;
         /**
-         * Optional team name filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
+        /**
+         * Includes games starting at or after this ISO 8601 timestamp.
+         */
         startDateRange?: string;
+        /**
+         * Includes games starting at or before this ISO 8601 timestamp.
+         */
         endDateRange?: string;
     };
     url: '/stats/player/season';
@@ -1308,27 +1320,27 @@ export type GetPlayerSeasonShootingStatsData = {
     path?: never;
     query: {
         /**
-         * Required season filter
+         * The season to return.
          */
         season: number;
         /**
-         * Optional season type filter
+         * Filters results to the specified season type.
          */
         seasonType?: SeasonType;
         /**
-         * Team filter, required if conference is not provided
+         * Filters results to the specified team name. Required when conference is not provided.
          */
         team?: string;
         /**
-         * Conference abbreviation filter, required if team is not provided
+         * Filters results to the specified conference abbreviation. Required when team is not provided.
          */
         conference?: string;
         /**
-         * Optional start date range filter
+         * Includes games starting at or after this ISO 8601 timestamp.
          */
         startDateRange?: string;
         /**
-         * Optional end date range filter
+         * Includes games starting at or before this ISO 8601 timestamp.
          */
         endDateRange?: string;
     };
@@ -1349,19 +1361,19 @@ export type GetRecruitsData = {
     path?: never;
     query?: {
         /**
-         * Optional year filter
+         * Filters results to the specified recruiting year.
          */
         year?: number;
         /**
-         * Optional college team filter
+         * Filters results to the specified college team.
          */
         team?: string;
         /**
-         * Optional college conference filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
         /**
-         * Optional position filter
+         * Filters results to the specified player position.
          */
         position?: string;
     };
@@ -1382,15 +1394,15 @@ export type GetTeamRecruitingRankingsData = {
     path?: never;
     query?: {
         /**
-         * Optional year filter
+         * Filters results to the specified recruiting year.
          */
         year?: number;
         /**
-         * Optional team filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
     };
@@ -1410,25 +1422,28 @@ export type GetPortalTransfersData = {
     body?: never;
     path?: never;
     query?: {
+        /**
+         * Filters results to the specified transfer season.
+         */
         year?: number;
         /**
-         * Source team filter
+         * Filters results to the specified source team.
          */
         sourceTeam?: string;
         /**
-         * Destination team filter
+         * Filters results to the specified destination team.
          */
         destinationTeam?: string;
         /**
-         * Source conference filter
+         * Filters results to the specified source conference abbreviation.
          */
         sourceConference?: string;
         /**
-         * Destination conference filter
+         * Filters results to the specified destination conference abbreviation.
          */
         destinationConference?: string;
         /**
-         * Position filter
+         * Filters results to the specified player position.
          */
         position?: string;
     };
@@ -1449,15 +1464,15 @@ export type GetSrsData = {
     path?: never;
     query?: {
         /**
-         * Optional season filter
+         * Filters results to the specified season.
          */
         season?: number;
         /**
-         * Optional team filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
     };
@@ -1478,15 +1493,15 @@ export type GetAdjustedEfficiencyData = {
     path?: never;
     query?: {
         /**
-         * Optional season filter
+         * Filters results to the specified season.
          */
         season?: number;
         /**
-         * Optional team filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
     };
@@ -1507,15 +1522,15 @@ export type GetEloData = {
     path?: never;
     query?: {
         /**
-         * Optional season filter
+         * Filters results to the specified season.
          */
         season?: number;
         /**
-         * Optional team filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
     };
@@ -1536,27 +1551,27 @@ export type GetRankingsData = {
     path?: never;
     query?: {
         /**
-         * Optional season filter
+         * Filters results to the specified season.
          */
         season?: number;
         /**
-         * Optional season type filter
+         * Filters results to the specified season type.
          */
         seasonType?: SeasonType;
         /**
-         * Optional week filter
+         * Filters results to the specified week.
          */
         week?: number;
         /**
-         * Optional poll type filter ("ap" or "coaches")
+         * Filters results to the AP or Coaches Poll.
          */
         pollType?: 'ap' | 'coaches';
         /**
-         * Optional team filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
     };
@@ -1576,13 +1591,13 @@ export type GetPlaysData = {
     body?: never;
     path: {
         /**
-         * Game id filter
+         * The game ID.
          */
         gameId: number;
     };
     query?: {
         /**
-         * Optional filter to only return shooting plays
+         * When true, returns only shooting plays.
          */
         shootingPlaysOnly?: boolean;
     };
@@ -1602,17 +1617,17 @@ export type GetPlaysByPlayerIdData = {
     body?: never;
     path: {
         /**
-         * Required player id filter
+         * The player ID.
          */
         playerId: number;
     };
     query: {
         /**
-         * Required season filter
+         * The season to return.
          */
         season: number;
         /**
-         * Optional filter to only return shooting plays
+         * When true, returns only shooting plays.
          */
         shootingPlaysOnly?: boolean;
     };
@@ -1633,15 +1648,15 @@ export type GetPlaysByTeamData = {
     path?: never;
     query: {
         /**
-         * Required season filter
+         * The season to return.
          */
         season: number;
         /**
-         * Required team filter
+         * The team name to return.
          */
         team: string;
         /**
-         * Optional filter to only return shooting plays
+         * When true, returns only shooting plays.
          */
         shootingPlaysOnly?: boolean;
     };
@@ -1662,15 +1677,15 @@ export type GetPlaysByDateData = {
     path?: never;
     query: {
         /**
-         * Required date filter in ISO 8601 format (YYYY-MM-DD)
+         * The date to return in ISO 8601 format (YYYY-MM-DD).
          */
         date: string;
         /**
-         * Optional filter to only return shooting plays
+         * When true, returns only shooting plays.
          */
         shootingPlaysOnly?: boolean;
         /**
-         * Optional UTC offset in hours to adjust the date range
+         * Shifts the date range by this number of hours from UTC.
          */
         utcOffset?: number;
     };
@@ -1691,15 +1706,15 @@ export type GetPlaysByTournamentData = {
     path?: never;
     query: {
         /**
-         * Required tournament filter (e.g. NCAA, NIT, etc)
+         * The tournament to return, such as NCAA or NIT.
          */
         tournament: string;
         /**
-         * Required season filter
+         * The season to return.
          */
         season: number;
         /**
-         * Optional filter to only return shooting plays
+         * When true, returns only shooting plays.
          */
         shootingPlaysOnly?: boolean;
     };
@@ -1736,19 +1751,19 @@ export type GetLineupsByTeamSeasonData = {
     path?: never;
     query: {
         /**
-         * Required season filter
+         * The season to return.
          */
         season: number;
         /**
-         * Required team filter
+         * The team name to return.
          */
         team: string;
         /**
-         * Optional start date range filter
+         * Includes games starting at or after this ISO 8601 timestamp.
          */
         startDateRange?: string;
         /**
-         * Optional end date range filter
+         * Includes games starting at or before this ISO 8601 timestamp.
          */
         endDateRange?: string;
     };
@@ -1768,7 +1783,7 @@ export type GetLineupStatsByGameData = {
     body?: never;
     path: {
         /**
-         * Required game id filter
+         * The game ID.
          */
         gameId: number;
     };
@@ -1790,23 +1805,23 @@ export type GetLinesData = {
     path?: never;
     query?: {
         /**
-         * Optional season filter
+         * Filters results to the specified season.
          */
         season?: number;
         /**
-         * Optional team name filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
         /**
-         * Optional start timestamp in ISO 8601 format
+         * Includes games starting at or after this ISO 8601 timestamp.
          */
         startDateRange?: string;
         /**
-         * Optional end timestamp in ISO 8601 format
+         * Includes games starting at or before this ISO 8601 timestamp.
          */
         endDateRange?: string;
     };
@@ -1843,35 +1858,35 @@ export type GetGamesData = {
     path?: never;
     query?: {
         /**
-         * Optional start timestamp in ISO 8601 format
+         * Includes games starting at or after this ISO 8601 timestamp.
          */
         startDateRange?: string;
         /**
-         * Optional end timestamp in ISO 8601 format
+         * Includes games starting at or before this ISO 8601 timestamp.
          */
         endDateRange?: string;
         /**
-         * Optional team name filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
         /**
-         * Optional season filter
+         * Filters results to the specified season.
          */
         season?: number;
         /**
-         * Optional season type filter
+         * Filters results to the specified season type.
          */
         seasonType?: SeasonType;
         /**
-         * Optional game status filter
+         * Filters results to the specified game status.
          */
         status?: GameStatus;
         /**
-         * Optional tournament filter (e.g. NCAA, NIT, etc)
+         * Filters results to the specified tournament, such as NCAA or NIT.
          */
         tournament?: string;
     };
@@ -1892,31 +1907,31 @@ export type GetBroadcastsData = {
     path?: never;
     query?: {
         /**
-         * Optional start timestamp in ISO 8601 format
+         * Includes games starting at or after this ISO 8601 timestamp.
          */
         startDateRange?: string;
         /**
-         * Optional end timestamp in ISO 8601 format
+         * Includes games starting at or before this ISO 8601 timestamp.
          */
         endDateRange?: string;
         /**
-         * Optional team name filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
         /**
-         * Optional season filter
+         * Filters results to the specified season.
          */
         season?: number;
         /**
-         * Optional season type filter
+         * Filters results to the specified season type.
          */
         seasonType?: SeasonType;
         /**
-         * Optional tournament filter (e.g. NCAA, NIT, etc)
+         * Filters results to the specified tournament, such as NCAA or NIT.
          */
         tournament?: string;
     };
@@ -1937,31 +1952,31 @@ export type GetGameTeamsData = {
     path?: never;
     query?: {
         /**
-         * Optional start timestamp in ISO 8601 format
+         * Includes games starting at or after this ISO 8601 timestamp.
          */
         startDateRange?: string;
         /**
-         * Optional end timestamp in ISO 8601 format
+         * Includes games starting at or before this ISO 8601 timestamp.
          */
         endDateRange?: string;
         /**
-         * Optional team name filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
         /**
-         * Optional season filter
+         * Filters results to the specified season.
          */
         season?: number;
         /**
-         * Optional season type filter
+         * Filters results to the specified season type.
          */
         seasonType?: SeasonType;
         /**
-         * Optional tournament filter (e.g. NCAA, NIT, etc)
+         * Filters results to the specified tournament, such as NCAA or NIT.
          */
         tournament?: string;
     };
@@ -1982,31 +1997,31 @@ export type GetGamePlayersData = {
     path?: never;
     query?: {
         /**
-         * Optional start timestamp in ISO 8601 format
+         * Includes games starting at or after this ISO 8601 timestamp.
          */
         startDateRange?: string;
         /**
-         * Optional end timestamp in ISO 8601 format
+         * Includes games starting at or before this ISO 8601 timestamp.
          */
         endDateRange?: string;
         /**
-         * Optional team name filter
+         * Filters results to the specified team name.
          */
         team?: string;
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
         /**
-         * Optional season filter
+         * Filters results to the specified season.
          */
         season?: number;
         /**
-         * Optional season type filter
+         * Filters results to the specified season type.
          */
         seasonType?: SeasonType;
         /**
-         * Optional tournament filter (e.g. NCAA, NIT, etc)
+         * Filters results to the specified tournament, such as NCAA or NIT.
          */
         tournament?: string;
     };
@@ -2027,7 +2042,7 @@ export type GetScoreboardData = {
     path?: never;
     query?: {
         /**
-         * Optional conference filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
     };
@@ -2080,19 +2095,19 @@ export type GetDraftPicksData = {
     path?: never;
     query?: {
         /**
-         * Optional draft year filter
+         * Filters results to the specified draft year.
          */
         year?: number;
         /**
-         * Optional NBA team filter
+         * Filters results to the specified NBA team.
          */
         draftTeam?: string;
         /**
-         * Optional source team (e.g. NCAA) filter
+         * Filters results to the specified college team.
          */
         sourceTeam?: string;
         /**
-         * Optional player position abbreviation filter
+         * Filters results to the specified player position abbreviation.
          */
         position?: string;
     };
@@ -2129,7 +2144,7 @@ export type GetConferenceHistoryData = {
     path?: never;
     query?: {
         /**
-         * Optional conference abbreviation filter
+         * Filters results to the specified conference abbreviation.
          */
         conference?: string;
     };

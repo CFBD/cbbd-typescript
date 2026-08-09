@@ -14,7 +14,7 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 };
 
 /**
- * Retrieves list of available venues
+ * Returns available venues and location information.
  */
 export const getVenues = <ThrowOnError extends boolean = false>(options?: Options<GetVenuesData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetVenuesResponse, unknown, ThrowOnError>({
@@ -30,7 +30,7 @@ export const getVenues = <ThrowOnError extends boolean = false>(options?: Option
 };
 
 /**
- * Retrieves historical team information
+ * Returns team and conference information.
  */
 export const getTeams = <ThrowOnError extends boolean = false>(options?: Options<GetTeamsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetTeamsResponse, unknown, ThrowOnError>({
@@ -46,7 +46,7 @@ export const getTeams = <ThrowOnError extends boolean = false>(options?: Options
 };
 
 /**
- * Retrieves team roster information
+ * Returns team rosters for a season.
  */
 export const getTeamRoster = <ThrowOnError extends boolean = false>(options: Options<GetTeamRosterData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetTeamRosterResponse, unknown, ThrowOnError>({
@@ -62,7 +62,7 @@ export const getTeamRoster = <ThrowOnError extends boolean = false>(options: Opt
 };
 
 /**
- * Returns all player substitutions for a given game
+ * Returns all recorded player substitutions for a game.
  */
 export const getSubstitutionsByGame = <ThrowOnError extends boolean = false>(options: Options<GetSubstitutionsByGameData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetSubstitutionsByGameResponse, unknown, ThrowOnError>({
@@ -78,7 +78,7 @@ export const getSubstitutionsByGame = <ThrowOnError extends boolean = false>(opt
 };
 
 /**
- * Retrieve all player substitutions for a given player and season
+ * Returns all recorded player substitutions for a player and season.
  */
 export const getSubstitutionsByPlayerId = <ThrowOnError extends boolean = false>(options: Options<GetSubstitutionsByPlayerIdData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetSubstitutionsByPlayerIdResponse, unknown, ThrowOnError>({
@@ -94,7 +94,7 @@ export const getSubstitutionsByPlayerId = <ThrowOnError extends boolean = false>
 };
 
 /**
- * Retrieve all player substitutions for a given team and season
+ * Returns all recorded player substitutions for a team and season.
  */
 export const getSubstitutionsByTeam = <ThrowOnError extends boolean = false>(options: Options<GetSubstitutionsByTeamData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetSubstitutionsByTeamResponse, unknown, ThrowOnError>({
@@ -110,7 +110,7 @@ export const getSubstitutionsByTeam = <ThrowOnError extends boolean = false>(opt
 };
 
 /**
- * Returns premium team leaderboard statistics by season, team, or conference (requires a Patreon Tier 2 subscription or higher)
+ * Returns team leaderboard statistics. This endpoint requires Patreon Tier 2 access or higher.
  */
 export const getTeamLeaderboardStats = <ThrowOnError extends boolean = false>(options?: Options<GetTeamLeaderboardStatsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetTeamLeaderboardStatsResponse, unknown, ThrowOnError>({
@@ -126,7 +126,7 @@ export const getTeamLeaderboardStats = <ThrowOnError extends boolean = false>(op
 };
 
 /**
- * Returns team season statistics by year or team
+ * Returns team season statistics. Provide at least a season or team.
  */
 export const getTeamSeasonStats = <ThrowOnError extends boolean = false>(options?: Options<GetTeamSeasonStatsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetTeamSeasonStatsResponse, unknown, ThrowOnError>({
@@ -142,7 +142,7 @@ export const getTeamSeasonStats = <ThrowOnError extends boolean = false>(options
 };
 
 /**
- * Retrieves team season shooting statistics
+ * Returns team shooting statistics for a season. Provide a team or conference.
  */
 export const getTeamSeasonShootingStats = <ThrowOnError extends boolean = false>(options: Options<GetTeamSeasonShootingStatsData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetTeamSeasonShootingStatsResponse, unknown, ThrowOnError>({
@@ -158,7 +158,7 @@ export const getTeamSeasonShootingStats = <ThrowOnError extends boolean = false>
 };
 
 /**
- * Returns player statistics by season
+ * Returns player statistics for a season.
  */
 export const getPlayerSeasonStats = <ThrowOnError extends boolean = false>(options: Options<GetPlayerSeasonStatsData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetPlayerSeasonStatsResponse, unknown, ThrowOnError>({
@@ -174,7 +174,7 @@ export const getPlayerSeasonStats = <ThrowOnError extends boolean = false>(optio
 };
 
 /**
- * Retrieves player season shooting statistics
+ * Returns player shooting statistics for a season. Provide a team or conference.
  */
 export const getPlayerSeasonShootingStats = <ThrowOnError extends boolean = false>(options: Options<GetPlayerSeasonShootingStatsData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetPlayerSeasonShootingStatsResponse, unknown, ThrowOnError>({
@@ -190,7 +190,7 @@ export const getPlayerSeasonShootingStats = <ThrowOnError extends boolean = fals
 };
 
 /**
- * Retrieves historical composite player recruiting ranking and ratings
+ * Returns historical composite player recruiting rankings and ratings.
  */
 export const getRecruits = <ThrowOnError extends boolean = false>(options?: Options<GetRecruitsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetRecruitsResponse, unknown, ThrowOnError>({
@@ -206,7 +206,7 @@ export const getRecruits = <ThrowOnError extends boolean = false>(options?: Opti
 };
 
 /**
- * Retrieves historical composite team recruiting rankings
+ * Returns historical composite team recruiting rankings.
  */
 export const getTeamRecruitingRankings = <ThrowOnError extends boolean = false>(options?: Options<GetTeamRecruitingRankingsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetTeamRecruitingRankingsResponse, unknown, ThrowOnError>({
@@ -222,7 +222,7 @@ export const getTeamRecruitingRankings = <ThrowOnError extends boolean = false>(
 };
 
 /**
- * Retrieves historical transfer portal activity
+ * Returns historical transfer portal activity.
  */
 export const getPortalTransfers = <ThrowOnError extends boolean = false>(options?: Options<GetPortalTransfersData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetPortalTransfersResponse, unknown, ThrowOnError>({
@@ -238,7 +238,7 @@ export const getPortalTransfers = <ThrowOnError extends boolean = false>(options
 };
 
 /**
- * Retrieves SRS ratings for the provided season, team, or conference.
+ * Returns Simple Rating System (SRS) ratings.
  */
 export const getSrs = <ThrowOnError extends boolean = false>(options?: Options<GetSrsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetSrsResponse, unknown, ThrowOnError>({
@@ -254,7 +254,7 @@ export const getSrs = <ThrowOnError extends boolean = false>(options?: Options<G
 };
 
 /**
- * Retrieves adjusted efficiency ratings for the provided season, team, or conference.
+ * Returns adjusted offensive and defensive efficiency ratings.
  */
 export const getAdjustedEfficiency = <ThrowOnError extends boolean = false>(options?: Options<GetAdjustedEfficiencyData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetAdjustedEfficiencyResponse, unknown, ThrowOnError>({
@@ -270,7 +270,7 @@ export const getAdjustedEfficiency = <ThrowOnError extends boolean = false>(opti
 };
 
 /**
- * Retrieves historical Elo ratings
+ * Returns historical Elo ratings.
  */
 export const getElo = <ThrowOnError extends boolean = false>(options?: Options<GetEloData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetEloResponse, unknown, ThrowOnError>({
@@ -286,7 +286,7 @@ export const getElo = <ThrowOnError extends boolean = false>(options?: Options<G
 };
 
 /**
- * Retrieves historical poll data
+ * Returns historical poll rankings.
  */
 export const getRankings = <ThrowOnError extends boolean = false>(options?: Options<GetRankingsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetRankingsResponse, unknown, ThrowOnError>({
@@ -302,7 +302,7 @@ export const getRankings = <ThrowOnError extends boolean = false>(options?: Opti
 };
 
 /**
- * Returns all plays for a given game
+ * Returns all recorded plays for a game.
  */
 export const getPlays = <ThrowOnError extends boolean = false>(options: Options<GetPlaysData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetPlaysResponse, unknown, ThrowOnError>({
@@ -318,7 +318,7 @@ export const getPlays = <ThrowOnError extends boolean = false>(options: Options<
 };
 
 /**
- * Retrieve all plays for a given player and season
+ * Returns all recorded plays for a player and season.
  */
 export const getPlaysByPlayerId = <ThrowOnError extends boolean = false>(options: Options<GetPlaysByPlayerIdData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetPlaysByPlayerIdResponse, unknown, ThrowOnError>({
@@ -334,7 +334,7 @@ export const getPlaysByPlayerId = <ThrowOnError extends boolean = false>(options
 };
 
 /**
- * Retrieve all plays for a given team and season
+ * Returns all recorded plays for a team and season.
  */
 export const getPlaysByTeam = <ThrowOnError extends boolean = false>(options: Options<GetPlaysByTeamData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetPlaysByTeamResponse, unknown, ThrowOnError>({
@@ -350,7 +350,7 @@ export const getPlaysByTeam = <ThrowOnError extends boolean = false>(options: Op
 };
 
 /**
- * Retrieve all plays for a given UTC date
+ * Returns all recorded plays for a UTC date.
  */
 export const getPlaysByDate = <ThrowOnError extends boolean = false>(options: Options<GetPlaysByDateData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetPlaysByDateResponse, unknown, ThrowOnError>({
@@ -366,7 +366,7 @@ export const getPlaysByDate = <ThrowOnError extends boolean = false>(options: Op
 };
 
 /**
- * Retrieve all plays for a given tournament and season
+ * Returns all recorded plays for a tournament and season.
  */
 export const getPlaysByTournament = <ThrowOnError extends boolean = false>(options: Options<GetPlaysByTournamentData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetPlaysByTournamentResponse, unknown, ThrowOnError>({
@@ -382,7 +382,7 @@ export const getPlaysByTournament = <ThrowOnError extends boolean = false>(optio
 };
 
 /**
- * Retrieve list of play types
+ * Returns available play types and their identifiers.
  */
 export const getPlayTypes = <ThrowOnError extends boolean = false>(options?: Options<GetPlayTypesData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetPlayTypesResponse, unknown, ThrowOnError>({
@@ -398,7 +398,7 @@ export const getPlayTypes = <ThrowOnError extends boolean = false>(options?: Opt
 };
 
 /**
- * Queries lineup statistics for a given team and season
+ * Returns lineup statistics for a team and season.
  */
 export const getLineupsByTeamSeason = <ThrowOnError extends boolean = false>(options: Options<GetLineupsByTeamSeasonData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetLineupsByTeamSeasonResponse, unknown, ThrowOnError>({
@@ -414,7 +414,7 @@ export const getLineupsByTeamSeason = <ThrowOnError extends boolean = false>(opt
 };
 
 /**
- * Queries lineup statistics for a specific game
+ * Returns lineup statistics for a game.
  */
 export const getLineupStatsByGame = <ThrowOnError extends boolean = false>(options: Options<GetLineupStatsByGameData, ThrowOnError>) => {
     return (options.client ?? _heyApiClient).get<GetLineupStatsByGameResponse, unknown, ThrowOnError>({
@@ -430,7 +430,7 @@ export const getLineupStatsByGame = <ThrowOnError extends boolean = false>(optio
 };
 
 /**
- * Returns betting lines for the first 3000 games that match the provided filters, ordered by start date.
+ * Returns betting lines for up to 3,000 games that match the filters, ordered by start date.
  */
 export const getLines = <ThrowOnError extends boolean = false>(options?: Options<GetLinesData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetLinesResponse, unknown, ThrowOnError>({
@@ -446,7 +446,7 @@ export const getLines = <ThrowOnError extends boolean = false>(options?: Options
 };
 
 /**
- * Returns a list of available line providers
+ * Returns available betting line providers.
  */
 export const getProviders = <ThrowOnError extends boolean = false>(options?: Options<GetProvidersData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetProvidersResponse, unknown, ThrowOnError>({
@@ -462,7 +462,7 @@ export const getProviders = <ThrowOnError extends boolean = false>(options?: Opt
 };
 
 /**
- * Returns information on the first 3000 games that match the provided filters, ordered by start date.
+ * Returns up to 3,000 games that match the filters, ordered by start date.
  */
 export const getGames = <ThrowOnError extends boolean = false>(options?: Options<GetGamesData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetGamesResponse, unknown, ThrowOnError>({
@@ -478,7 +478,7 @@ export const getGames = <ThrowOnError extends boolean = false>(options?: Options
 };
 
 /**
- * Returns broadcast information on the first 3000 games that match the provided filters, ordered by start date.
+ * Returns broadcast records for up to 3,000 games that match the filters, ordered by start date.
  */
 export const getBroadcasts = <ThrowOnError extends boolean = false>(options?: Options<GetBroadcastsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetBroadcastsResponse, unknown, ThrowOnError>({
@@ -494,7 +494,7 @@ export const getBroadcasts = <ThrowOnError extends boolean = false>(options?: Op
 };
 
 /**
- * Returns team box score statistics and metrics on the first 3000 games that match the provided filters, ordered by start date.
+ * Returns team box scores and advanced metrics for up to 3,000 games that match the filters, ordered by start date.
  */
 export const getGameTeams = <ThrowOnError extends boolean = false>(options?: Options<GetGameTeamsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetGameTeamsResponse, unknown, ThrowOnError>({
@@ -510,7 +510,7 @@ export const getGameTeams = <ThrowOnError extends boolean = false>(options?: Opt
 };
 
 /**
- * Returns player box score statistics and metrics on the first 1000 games that match the provided filters, ordered by start date.
+ * Returns player box scores and advanced metrics for up to 1,000 games that match the filters, ordered by start date.
  */
 export const getGamePlayers = <ThrowOnError extends boolean = false>(options?: Options<GetGamePlayersData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetGamePlayersResponse, unknown, ThrowOnError>({
@@ -526,7 +526,7 @@ export const getGamePlayers = <ThrowOnError extends boolean = false>(options?: O
 };
 
 /**
- * Retrieves live scoreboard data (requires a Patreon Tier 1 subscription or higher)
+ * Returns live scoreboard data. This endpoint requires Patreon Tier 1 access or higher.
  */
 export const getScoreboard = <ThrowOnError extends boolean = false>(options?: Options<GetScoreboardData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetScoreboardResponse, unknown, ThrowOnError>({
@@ -542,7 +542,7 @@ export const getScoreboard = <ThrowOnError extends boolean = false>(options?: Op
 };
 
 /**
- * Retrieves list of NBA teams
+ * Returns NBA teams represented in the draft data.
  */
 export const getDraftTeams = <ThrowOnError extends boolean = false>(options?: Options<GetDraftTeamsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetDraftTeamsResponse, unknown, ThrowOnError>({
@@ -558,7 +558,7 @@ export const getDraftTeams = <ThrowOnError extends boolean = false>(options?: Op
 };
 
 /**
- * Retrieves list of position names for NBA draft prospects
+ * Returns player positions represented in the draft data.
  */
 export const getDraftPositions = <ThrowOnError extends boolean = false>(options?: Options<GetDraftPositionsData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetDraftPositionsResponse, unknown, ThrowOnError>({
@@ -574,7 +574,7 @@ export const getDraftPositions = <ThrowOnError extends boolean = false>(options?
 };
 
 /**
- * Retrieves historical NBA draft picks
+ * Returns historical NBA draft picks.
  */
 export const getDraftPicks = <ThrowOnError extends boolean = false>(options?: Options<GetDraftPicksData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetDraftPicksResponse, unknown, ThrowOnError>({
@@ -590,7 +590,7 @@ export const getDraftPicks = <ThrowOnError extends boolean = false>(options?: Op
 };
 
 /**
- * Retrieves list of available conferences
+ * Returns available conferences and their identifiers.
  */
 export const getConferences = <ThrowOnError extends boolean = false>(options?: Options<GetConferencesData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetConferencesResponse, unknown, ThrowOnError>({
@@ -606,7 +606,7 @@ export const getConferences = <ThrowOnError extends boolean = false>(options?: O
 };
 
 /**
- * Retrieves historical conference membership information
+ * Returns historical conference membership records.
  */
 export const getConferenceHistory = <ThrowOnError extends boolean = false>(options?: Options<GetConferenceHistoryData, ThrowOnError>) => {
     return (options?.client ?? _heyApiClient).get<GetConferenceHistoryResponse, unknown, ThrowOnError>({
