@@ -9,6 +9,247 @@ export type VenueInfo = {
     country: string | null;
 };
 
+export type DirectoryTeam = {
+    id: number;
+    sourceId: string | null;
+    school: string;
+    mascot: string | null;
+    abbreviation: string | null;
+    displayName: string | null;
+    shortDisplayName: string | null;
+    conferenceId: number;
+};
+
+export type Conference = {
+    id: number;
+    name: string;
+    abbreviation: string;
+};
+
+export type TeamDirectory = {
+    season: number;
+    seasonLabel: string;
+    teams: Array<DirectoryTeam>;
+    conferences: Array<Conference>;
+};
+
+export type CountRecord = {
+    games: number;
+    wins: number;
+    losses: number;
+    unresolved: number;
+};
+
+export type RatedValue = {
+    value: number;
+    rank: number;
+};
+
+export type AdjustedRatings = {
+    offense: RatedValue;
+    defense: RatedValue;
+    net: RatedValue;
+    population: number;
+};
+
+export type PollStanding = {
+    state: 'ranked' | 'unranked' | 'unavailable';
+    date: string | null;
+    week: number | null;
+    seasonType: 'regular' | 'postseason' | 'preseason' | null;
+    rank: number | null;
+};
+
+export type Availability = 'available' | 'partial' | 'unavailable';
+
+export type Reason = 'no_games' | 'no_source_rows' | 'incomplete_inputs' | 'zero_denominator' | 'unclassified_games' | 'unclassified_shots';
+
+export type Coverage = {
+    state: Availability;
+    reason: Reason | null;
+    eligibleGames: number;
+    coveredGames: number;
+};
+
+export type ShootingLine = {
+    made: number | null;
+    attempted: number | null;
+    pct: number | null;
+};
+
+export type TeamBoxScore = {
+    fieldGoals: ShootingLine;
+    twoPointFieldGoals: ShootingLine;
+    threePointFieldGoals: ShootingLine;
+    freeThrows: ShootingLine;
+    rebounds: {
+        total: number | null;
+        defensive: number | null;
+        offensive: number | null;
+    };
+    assists: number | null;
+    steals: number | null;
+    blocks: number | null;
+    turnovers: number | null;
+    fouls: number | null;
+    minutes: number | null;
+    teamTurnovers: number | null;
+    technicalFouls: number | null;
+    flagrantFouls: number | null;
+    pointsInPaint: number | null;
+    pointsOffTurnovers: number | null;
+    fastBreakPoints: number | null;
+    trueShootingPct: number | null;
+};
+
+export type UnitMetrics = {
+    boxScore?: TeamBoxScore;
+    points: number | null;
+    possessions: number | null;
+    rawRating: number | null;
+    effectiveFieldGoalPct: number | null;
+    turnoverPct: number | null;
+    offensiveReboundPct: number | null;
+    freeThrowRate: number | null;
+};
+
+export type ShotBucket = {
+    key: 'at_rim' | 'two_point_jumper' | 'three_point_jumper' | 'unknown';
+    attempts: number;
+    made: number;
+    attemptPct: number | null;
+    fieldGoalPct: number | null;
+};
+
+export type PlayerSeasonDetails = {
+    fieldGoals: ShootingLine;
+    twoPointFieldGoals: ShootingLine;
+    threePointFieldGoals: ShootingLine;
+    freeThrows: ShootingLine;
+    rebounds: {
+        total: number | null;
+        defensive: number | null;
+        offensive: number | null;
+    };
+    assists: number | null;
+    steals: number | null;
+    blocks: number | null;
+    turnovers: number | null;
+    fouls: number | null;
+    starts: number | null;
+    assistTurnoverRatio: number | null;
+    freeThrowRate: number | null;
+    offensiveReboundPct: number | null;
+    advanced: {
+        winShares: {
+            per40: number | null;
+            total: number | null;
+            defensive: number | null;
+            offensive: number | null;
+        };
+        porpag: number | null;
+        netRating: number | null;
+        defensiveRating: number | null;
+        offensiveRating: number | null;
+        games: number;
+    };
+};
+
+export type ProfilePlayer = {
+    seasonStats?: PlayerSeasonDetails;
+    athleteId: number;
+    name: string;
+    position: string | null;
+    onRoster: boolean;
+    hasStats: boolean;
+    games: number | null;
+    minutes: number | null;
+    points: number | null;
+    rebounds: number | null;
+    assists: number | null;
+    minutesPerGame: number | null;
+    pointsPerGame: number | null;
+    usagePct: number | null;
+    trueShootingPct: number | null;
+    effectiveFieldGoalPct: number | null;
+    usageGames: number;
+    complete: boolean;
+};
+
+export type ProfileGame = {
+    id: number;
+    opponentId: number;
+    opponent: string;
+    opponentHasProfile: boolean;
+    startDate: string;
+    calendarDate: string;
+    startTimeTbd: boolean;
+    location: 'home' | 'away' | 'neutral';
+    status: 'scheduled' | 'in_progress' | 'final' | 'postponed' | 'cancelled';
+    seasonType: 'regular' | 'postseason' | 'preseason';
+    gameType: string | null;
+    eligibility: 'counted' | 'exhibition' | 'unknown';
+    conferenceGame: boolean | null;
+    teamPoints: number | null;
+    opponentPoints: number | null;
+    result: 'W' | 'L' | null;
+    venue: string | null;
+};
+
+export type TeamSeasonOverview = {
+    formatVersion: 1 | 2;
+    teamId: number;
+    season: number;
+    seasonLabel: string;
+    generatedAt: string;
+    team: {
+        conference: Conference;
+        sourceId: string | null;
+        mascot: string | null;
+        school: string;
+    };
+    record: {
+        unknownConferenceGames: number;
+        unknownEligibilityGames: number;
+        complete: boolean;
+        conference: CountRecord;
+        overall: CountRecord;
+    };
+    ratings: {
+        polls: {
+            coaches: PollStanding;
+            ap: PollStanding;
+        };
+        srs: number | null;
+        elo: number | null;
+        adjusted: AdjustedRatings | null;
+    };
+    efficiency: {
+        defense: UnitMetrics;
+        offense: UnitMetrics;
+        paceGames: number;
+        pace: number | null;
+        coverage: Coverage;
+    };
+    shooting: {
+        buckets: Array<ShotBucket>;
+        trackedAttempts: number;
+        coverage: Coverage;
+    };
+    players: {
+        rows: Array<ProfilePlayer>;
+        coverage: Coverage;
+    };
+    schedule: {
+        games: Array<ProfileGame>;
+    };
+    sources: {
+        notes: Array<string>;
+        latestFinalStartDate: string | null;
+        leaderboardUpdatedAt: string | null;
+    };
+};
+
 export type TeamInfo = {
     id: number;
     sourceId: string;
@@ -1040,6 +1281,49 @@ export type GetVenuesResponses = {
 };
 
 export type GetVenuesResponse = GetVenuesResponses[keyof GetVenuesResponses];
+
+export type GetDirectoryData = {
+    body?: never;
+    path?: never;
+    query: {
+        season: number;
+    };
+    url: '/teams/directory';
+};
+
+export type GetDirectoryResponses = {
+    /**
+     * Ok
+     */
+    200: TeamDirectory;
+};
+
+export type GetDirectoryResponse = GetDirectoryResponses[keyof GetDirectoryResponses];
+
+export type GetOverviewData = {
+    body?: never;
+    path: {
+        /**
+         * Team ID filter
+         */
+        teamId: number;
+        /**
+         * Season filter
+         */
+        season: number;
+    };
+    query?: never;
+    url: '/teams/{teamId}/season/{season}/overview';
+};
+
+export type GetOverviewResponses = {
+    /**
+     * Ok
+     */
+    200: TeamSeasonOverview;
+};
+
+export type GetOverviewResponse = GetOverviewResponses[keyof GetOverviewResponses];
 
 export type GetTeamsData = {
     body?: never;
