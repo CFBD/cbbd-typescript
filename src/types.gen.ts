@@ -266,6 +266,7 @@ export type TeamInfo = {
     currentState: string | null;
     conferenceId: number | null;
     conference: string | null;
+    logos: Array<string> | null;
 };
 
 export type TeamRosterPlayer = {
