@@ -593,6 +593,9 @@ export type PlayerSeasonStats = {
     athleteId: number;
     athleteSourceId: string;
     name: string;
+    /**
+     * Blank when the position is unavailable.
+     */
     position: string;
     games: number;
     starts: number;
@@ -1163,6 +1166,9 @@ export type GameBoxScorePlayers = {
         minutes: number | null;
         ejected: boolean | null;
         starter: boolean | null;
+        /**
+         * Blank when the position is unavailable.
+         */
         position: string;
         name: string;
         athleteSourceId: string;
