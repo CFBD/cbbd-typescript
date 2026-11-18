@@ -945,6 +945,26 @@ export type LineProviderInfo = {
     name: string;
 };
 
+export type UserInfo = {
+    patronLevel: number;
+    tierName: string;
+    /**
+     * Advertised monthly call allowance, or null for admin accounts.
+     */
+    monthlyLimit: number | null;
+    remainingCalls: number | null;
+    usedCalls: number | null;
+    /**
+     * Advertised next reset as an ISO timestamp (00:00 UTC on the first of the month).
+     */
+    resetAt: string;
+    /**
+     * CBB and CFB share one monthly allowance.
+     */
+    sharedPool: boolean;
+    products: Array<string>;
+};
+
 export type GameStatus = 'scheduled' | 'in_progress' | 'final' | 'postponed' | 'cancelled';
 
 export type GameInfo = {
@@ -2143,6 +2163,22 @@ export type GetProvidersResponses = {
 };
 
 export type GetProvidersResponse = GetProvidersResponses[keyof GetProvidersResponses];
+
+export type GetUserInfoData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/info';
+};
+
+export type GetUserInfoResponses = {
+    /**
+     * Ok
+     */
+    200: UserInfo;
+};
+
+export type GetUserInfoResponse = GetUserInfoResponses[keyof GetUserInfoResponses];
 
 export type GetGamesData = {
     body?: never;
